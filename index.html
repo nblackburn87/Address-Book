@@ -13,22 +13,20 @@
       <h1>Address book</h1>
       
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
           <h2>Add a contact:</h2>
           <form id="new-contact">
             <div class="form-group">
-              <label for="new-first-name">First name</label>
-              <input type="text" class="form-control" id="new-first-name">
+              <input type="text" class="form-control" placeholder="First Name" id="new-first-name">
             </div>
             <div class="form-group">
-              <label for="new-last-name">Last name</label>
-              <input type="text" class="form-control" id="new-last-name">
+              <input type="text" class="form-control" placeholder="Last Name" id="new-last-name">
             </div>
           </div>
         </div>
-
+      <h4>Phone Number</h4>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
           <div id="new-phone-numbers">
             <div class="new-phone">
               <div class="col-xs-3">
@@ -50,9 +48,9 @@
           </div>
         </div>
       </div>
-
+      <h4>Address</h4>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
           <div id="new-addresses">
             <div class="new-address">
               <div class="form-group">
@@ -70,6 +68,7 @@
       </div>
 
       <span class="btn btn-primary" id="add-address">Another address</span>
+      <span class="btn btn-info" id="add-phone">Another phone</span>
 
       <button type="submit" class="btn">Add</button>
     </form>
@@ -80,7 +79,7 @@
       </ul>
         
 
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div id="show-contact">
           <h2></h2>
 
