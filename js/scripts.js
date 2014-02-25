@@ -14,7 +14,7 @@ var Phone = {
   phoneNumber: function() {
     return this.areaCode + "-" + this.firstThreeNumbers + "-" + this.lastFourNumbers;
   }
-}
+};
 
 $(document).ready(function() {
   $("#add-address").click(function() {
@@ -43,7 +43,22 @@ $(document).ready(function() {
     newContact.firstName = inputtedFirstName;
     newContact.lastName = inputtedLastName;
 
+
+    newContact.phoneNumbers = [];
     newContact.addresses = [];
+
+    $(".new-phone").each(function() {
+      var inputtedAreaCode = $(this).find("input.new-area-code").val();
+      var inputtedFirstThree = $(this).find("input.new-first-three").val();
+      var inputtedLastFour = $(this).find("input.new-last-four").val();
+
+      var newPhone = Object.create(Phone);
+      newPhone.areaCode = inputtedAreaCode;
+      newPhone.firstThreeNumbers = inputtedFirstThree;
+      newPhone.lastFourNumbers = inputtedLastFour;
+
+      newContact.phoneNumbers.push(newPhone);
+    });
 
     $(".new-address").each(function() {
       var inputtedStreet = $(this).find("input.new-street").val();
@@ -67,6 +82,11 @@ $(document).ready(function() {
       $("#show-contact h2").text(newContact.fullName());
       $(".first-name").text(newContact.firstName);
       $(".last-name").text(newContact.lastName);
+
+      $("ul#phone-numbers").text("");
+      newContact.phoneNumbers.forEach(function(phone) {
+        $("ul#phone-numbers").append("<li>" + phone.phoneNumber() + "</li>");
+      });
 
       $("ul#addresses").text("");
       newContact.addresses.forEach(function(address) {
