@@ -8,12 +8,13 @@ describe("Address", function () {
       testAddress.fullAddress().should.equal("123 4th Ave, Portland, Oregon");
     });
   });
-  // describe("invalid", function() {
-  //   it("returns invalid if the information entered does not constitue a valid address", function() {
-  //     var testAddress = Object.create(Address);
-  //     testAddress.street = 
-  //   })
-  // }
+  describe("valid", function() {
+    it("returns false if City is not a string", function() {
+      var testAddress = Object.create(Address);
+      testAddress.city = "125Dre";
+      testAddress.valid().should.equal(false);
+    });
+  });
 });
 
 describe("Phone", function(){
