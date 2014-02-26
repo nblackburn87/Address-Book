@@ -12,6 +12,19 @@ describe("Address", function () {
     it("returns false if City is not a string", function() {
       var testAddress = Object.create(Address);
       testAddress.city = "125Dre";
+      testAddress.street = "Street";
+      testAddress.valid().should.equal(false);
+    });
+    it("returns true if City is a string", function() {
+      var testAddress = Object.create(Address);
+      testAddress.city = "City";
+      testAddress.street = "Street";
+      testAddress.valid().should.equal(true);
+    });
+    it("returns false if the string is fewer than four characters", function() {
+      var testAddress = Object.create(Address);
+      testAddress.street = "Glo";
+      testAddress.city = "City";
       testAddress.valid().should.equal(false);
     });
   });
@@ -28,12 +41,19 @@ describe("Phone", function(){
     });
   });
   describe("valid", function() {
-    it("returns invalid for an entry containing non-number characters", function() {
+    it("returns false for an entry containing non-number characters", function() {
       var testPhone = Object.create(Phone);
       testPhone.areaCode = "332";
-      testPhone.firstThreeNumbers = "3445";
-      testPhone.lastFourNumbers = "5698";
+      testPhone.firstThreeNumbers = "34!";
+      testPhone.lastFourNumbers = "R2D2";
       testPhone.valid().should.equal(false);
+    });
+    it("returns true for a valid phone number", function() {
+      var testPhone = Object.create(Phone);
+      testPhone.areaCode = "332";
+      testPhone.firstThreeNumbers = "344";
+      testPhone.lastFourNumbers = "5698";
+      testPhone.valid().should.equal(true);
     });
   });
 });

@@ -10,8 +10,9 @@ var Address = {
   },
 
   valid: function() {
-    var regEx = (/([.*+?^=!:${}()|\[\]\/\\\d])+/g);
-    if(!regEx.test(this.city)) {
+    var regEx = (/([*+?^=!:${}()|\[\]\/\\\d])+/g);
+    if((!regEx.test(this.city)) && (this.street.length > 4)) {
+      console.log();
       return true;
     } else {
       return false;
@@ -151,7 +152,6 @@ $(document).ready(function() {
       var inputtedStreet = $(this).find("input.new-street").val();
       var inputtedCity = $(this).find("input.new-city").val();
       var inputtedState = $(this).find(".new-state").val();
-      console.log(inputtedState);
 
       newAddress.street = inputtedStreet;
       newAddress.city = inputtedCity;
